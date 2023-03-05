@@ -63,7 +63,7 @@ export default function Home() {
             <div className={headerClassName}>
               <h1 className="text-4xl">Refine your prompts</h1>
               
-              <p className="text-lg mt-2">Enter a prompt and we'll help you refine it.</p>
+              <p className="text-lg mt-2">Enter a prompt and refine it.</p>
 
               <div className='mt-5'>
                 <div className="divider"></div>
