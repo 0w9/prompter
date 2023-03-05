@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { event } from '../lib/gtag'
 
 export default function Home() {
   const [userPrompt, setUserPrompt] = useState('')
@@ -8,6 +9,13 @@ export default function Home() {
   const [headerIsShown, setIsShown] = useState(true);
 
   const refinePrompt = async () => {
+
+    event({
+      action: 'new_prompt',
+      params: {
+          userPrompt
+        },
+    });
 
     const response = await fetch('/api/generate', {
       method: 'POST',
