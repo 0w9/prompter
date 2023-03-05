@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { event } from '../lib/gtag'
+import { event } from '../lib/ga'
 
 export default function Home() {
   const [userPrompt, setUserPrompt] = useState('')
