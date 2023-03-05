@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import ReactGA from 'react-ga';
 
 export default function Home() {
   const [userPrompt, setUserPrompt] = useState('')
@@ -8,6 +9,12 @@ export default function Home() {
   const [headerIsShown, setIsShown] = useState(true);
 
   const refinePrompt = async () => {
+    ReactGA.event({
+      category: 'Prompt',
+      action: 'Refined a prompt',
+      value: userPrompt
+    })
+
     const response = await fetch('/api/generate', {
       method: 'POST',
       headers: {
