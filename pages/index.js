@@ -107,10 +107,10 @@ export default function GeneratePrompt() {
 
                   <option disabled>Models</option>
 
-                  <option>stable-diffusion</option>
-                  <option>GPT-3</option>
-                  <option>ChatGPT</option>
-                  <option>MidJourney</option>
+                  <option disabled>stable-diffusion</option>
+                  <option disabled>GPT-3</option>
+                  <option disabled>ChatGPT</option>
+                  <option disabled>MidJourney</option>
                 </select>
 
                 <input
