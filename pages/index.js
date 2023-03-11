@@ -46,7 +46,7 @@ export default function GeneratePrompt() {
             <div>
               <h1 className="text-4xl">Write better prompts</h1>
               <p className="text-lg mt-2">
-                Enter a prompt and I'll rewrite it, using AI.
+                Enter a prompt and I will rewrite it, using AI.
               </p>
 
               <div className="mt-5">
