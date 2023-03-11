@@ -97,7 +97,7 @@ export default function GeneratePrompt() {
               <div className="input-group">
                 <select
                   class="select select-bordered"
-                  value={promoptType}
+                  value={promptType}
                   onChange={(e) => setPromptType(e.target.value)}
                 >
                   <option disabled>Use Cases</option>
