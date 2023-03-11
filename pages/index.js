@@ -19,7 +19,7 @@ export default function GeneratePrompt() {
       },
     });
 
-    const response = await fetch("/api/generate", {
+    const response = await fetch("https://prompter.lennard.codes/api/generate", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
