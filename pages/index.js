@@ -106,11 +106,6 @@ export default function GeneratePrompt() {
                   <option>Image/Art</option>
 
                   <option disabled>Models</option>
-
-                  <option disabled>stable-diffusion</option>
-                  <option disabled>GPT-3</option>
-                  <option disabled>ChatGPT</option>
-                  <option disabled>MidJourney</option>
                 </select>
 
                 <input
