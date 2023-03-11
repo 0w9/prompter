@@ -8,14 +8,14 @@ export default function GeneratePrompt() {
   const [inputIsShown, setInputIsShown] = useState(true);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [headerIsShown, setIsShown] = useState(true);
-  const [promoptType, setPromptType] = useState("writing");
+  const [promptType, setPromptType] = useState("writing");
 
   const refinePrompt = async () => {
     event({
       action: "new_prompt",
       params: {
         userPrompt,
-        model: promoptType,
+        model: promptType,
       },
     });
 
@@ -24,11 +24,11 @@ export default function GeneratePrompt() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ prompt: userPrompt, model: promoptType }),
+      body: JSON.stringify({ prompt: userPrompt, model: promptType }),
     });
     const data = await response.json();
     setRefinedPrompt(data.prompt);
-    finishedPrompt(userPrompt, data.prompt, promoptType);
+    finishedPrompt(userPrompt, data.prompt, promptType);
     toggleView();
   };
 
