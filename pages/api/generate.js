@@ -1,9 +1,9 @@
+import posthog  from "posthog-js"
+
 export default async function handler(req, res) {
-  // call the openai api for gpt-3.5-turbo
+  const { prompt, model } = req.body
 
-  const { prompt } = req.body
-
-  const model = "gpt-3.5-turbo"
+  posthog.capture('my event', { property: 'value' })
 
   const url = "https://api.openai.com/v1/chat/completions"
 
@@ -13,12 +13,19 @@ export default async function handler(req, res) {
       `Bearer ${process.env.OPENAI_API_KEY}`
   }
 
+  console.log(req.body)
+
   const data = JSON.stringify({
     "model": "gpt-3.5-turbo",
     "messages": [
       {
         role: "user",
-        content: `Hey. Please write a better stable-diffusion text-to-image prompt for this idea: ${prompt}. Please only return the new prompt.`
+        content: `
+        What prompt would I have to use to get the best result for the following idea: ${prompt}? 
+        The model I am using is  ${model}. 
+        Please create a prompt for a ${model} specifically. 
+        If its a image model write a prompt that can be used in the speicified model: ${model}, etc. 
+        Only return the new prompt and do not include any other text. Do not add quotes around the prompt.`
       }
     ],
   })
@@ -34,7 +41,6 @@ export default async function handler(req, res) {
   if(json.error) {
     return res.status(500).json({ error: json.error })
   } else {
-    // filter all the text of json.choices[0].message.content, remove the wrong spaces and newlines and return the refined prompt
     const refinedPrompt = json.choices[0].message.content.replace(/(\r\n|\n|\r)/gm, " ").replace(/ +(?= )/g,'').replace('Hey. Please write a better stable-diffusion text-to-image prompt for this idea: ', '').replace('Please only return the new prompt.', '')
     return res.status(200).json({ prompt: refinedPrompt })
   }  
